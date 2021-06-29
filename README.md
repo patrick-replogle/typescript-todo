@@ -1,11 +1,14 @@
 # Todo App
 
+Deployed web app can be found here: https://typescript-todo-web-app.netlify.app/
+
 ## Tech Stack
 
 - TypeScript
 - React
 - Sass
 - Material UI
+- Netlify
 
 ## Project Overview
 
