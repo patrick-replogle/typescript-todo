@@ -24,7 +24,7 @@ const Todo = ({
   dispatch: React.Dispatch<ActionWithPayload>;
 }) => {
   const { completed, details, date } = todo;
-  const [checked, setChecked] = useState<boolean>(completed);
+  const [checked, setChecked] = useState(completed);
 
   const deleteTodo = (): void => {
     dispatch({ type: 'DELETE_TODO', payload: todo });
@@ -34,7 +34,7 @@ const Todo = ({
     dispatch({ type: 'TOGGLE_EDIT', payload: todo });
   };
 
-  const toggleCompleted = (): void => {
+  const toggleCompleted = () => {
     dispatch({ type: 'TOGGLE_COMPLETED', payload: todo });
     setChecked((prevState) => !prevState);
   };

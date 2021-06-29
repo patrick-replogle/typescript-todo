@@ -56,17 +56,17 @@ const Form = ({
     }
   };
 
-  const cancel = () => {
+  const cancel = (): void => {
     dispatch({ type: 'CANCEL_EDIT' });
     setFormState(intialFormState);
   };
 
-  const clearCompletedTodos = () => {
+  const clearCompletedTodos = (): void => {
     dispatch({ type: 'CLEAR_COMPLETED_TODOS' });
     setFormState(intialFormState);
   };
 
-  useEffect(() => {
+  useEffect((): void => {
     if (isEditing) {
       setFormState({
         details: todoToEdit.details,

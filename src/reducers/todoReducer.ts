@@ -52,7 +52,7 @@ export const todoReducer = (
         ...state,
         todos: state.todos.map((t) => {
           if (t.id === action.payload.id) {
-            t.completed = !t.completed;
+            return { ...t, completed: !t.completed };
           }
           return t;
         })
