@@ -1,24 +1,25 @@
 import { Dispatch } from 'react';
 
-import { TodoType } from '../../types'
+import { TodoType } from '../../types';
 
-import { ActionType } from '../../actions'
+import { ActionType } from '../../actions';
 
-import Todo from '../todo/Todo'
+import Todo from '../todo/Todo';
 
 type TodoListProps = {
-    todos: TodoType[]
-    dispatch: Dispatch<ActionType>
-}
+  todos: TodoType[];
+  dispatch: Dispatch<ActionType>;
+};
 
 const TodoList = ({ todos, dispatch }: TodoListProps) => {
-    return (
-        <div>
-            {todos.length && todos.map((todo) => {
-                return <Todo todo={todo} key={todo.id} dispatch={dispatch} />;
-            })}
-        </div>
-    )
-}
+  return (
+    <div>
+      {todos.length &&
+        todos.map((todo) => {
+          return <Todo todo={todo} key={todo.id} dispatch={dispatch} />;
+        })}
+    </div>
+  );
+};
 
 export default TodoList;

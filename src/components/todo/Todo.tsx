@@ -1,5 +1,4 @@
-
-import { ActionWithPayload } from "../../actions";
+import { ActionWithPayload } from '../../actions';
 
 type TodoProps = {
   id: number;
@@ -15,23 +14,24 @@ const Todo = ({
   todo: TodoProps;
   dispatch: React.Dispatch<ActionWithPayload>;
 }) => {
-    
   const deleteTodo = () => {
-    dispatch({ type: "DELETE_TODO", payload: todo });
+    dispatch({ type: 'DELETE_TODO', payload: todo });
   };
 
   const toggleEdit = () => {
-    dispatch({ type: "TOGGLE_EDIT", payload: todo });
+    dispatch({ type: 'TOGGLE_EDIT', payload: todo });
   };
 
   const toggleCompleted = () => {
-    dispatch( { type : "TOGGLE_COMPLETED", payload: todo })
-  }
+    dispatch({ type: 'TOGGLE_COMPLETED', payload: todo });
+  };
 
   return (
     <div>
       <p>{todo.date}</p>
-      <p style={{textDecoration: todo.completed ? 'underline' : 'none'}}>{todo.details}</p>
+      <p style={{ textDecoration: todo.completed ? 'underline' : 'none' }}>
+        {todo.details}
+      </p>
       <p>{String(todo.completed)}</p>
       <button onClick={deleteTodo}>Delete</button>
       <button onClick={toggleEdit}>Edit</button>

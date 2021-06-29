@@ -1,6 +1,6 @@
-import { TodoType } from "../types";
+import { TodoType } from '../types';
 
-import { ActionType } from "../actions";
+import { ActionType } from '../actions';
 
 type TodoState = {
   todos: TodoType[];
@@ -13,17 +13,17 @@ export const todoReducer = (
   action: ActionType
 ): TodoState => {
   switch (action.type) {
-    case "ADD_TODO":
+    case 'ADD_TODO':
       return {
         ...state,
         todos: [...state.todos, action.payload]
       };
-    case "DELETE_TODO":
+    case 'DELETE_TODO':
       return {
         ...state,
         todos: state.todos.filter((t) => t.id !== action.payload.id)
       };
-    case "UPDATE_TODO":
+    case 'UPDATE_TODO':
       return {
         ...state,
         todos: state.todos.map((t) => {
@@ -35,19 +35,19 @@ export const todoReducer = (
         isEditing: false,
         todoToEdit: {} as TodoType
       };
-    case "TOGGLE_EDIT":
+    case 'TOGGLE_EDIT':
       return {
         ...state,
         isEditing: true,
         todoToEdit: action.payload
       };
-    case "CANCEL_EDIT":
+    case 'CANCEL_EDIT':
       return {
         ...state,
         isEditing: false,
         todoToEdit: {} as TodoType
       };
-    case "TOGGLE_COMPLETED":
+    case 'TOGGLE_COMPLETED':
       return {
         ...state,
         todos: state.todos.map((t) => {
@@ -57,7 +57,7 @@ export const todoReducer = (
           return t;
         })
       };
-    case "CLEAR_COMPLETED_TODOS":
+    case 'CLEAR_COMPLETED_TODOS':
       return {
         ...state,
         todos: state.todos.filter((t) => !t.completed)

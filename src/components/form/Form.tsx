@@ -1,12 +1,12 @@
-import { useState, Dispatch, ChangeEvent, FormEvent, useEffect } from "react";
+import { useState, Dispatch, ChangeEvent, FormEvent, useEffect } from 'react';
 
-import { TodoType } from "../../types";
+import { TodoType } from '../../types';
 
-import { ActionType } from "../../actions";
+import { ActionType } from '../../actions';
 
-import { generateTodayDateString } from "../../util/functions";
+import { generateTodayDateString } from '../../util/functions';
 
-import "./form.styles.scss";
+import './form.styles.scss';
 
 type TodoProps = {
   todos: TodoType[];
@@ -15,8 +15,8 @@ type TodoProps = {
 };
 
 const intialFormState = {
-  details: "",
-  date: ""
+  details: '',
+  date: ''
 };
 
 const Form = ({
@@ -45,7 +45,7 @@ const Form = ({
           id: Date.now(),
           completed: false
         };
-        dispatch({ type: "ADD_TODO", payload: newTodo });
+        dispatch({ type: 'ADD_TODO', payload: newTodo });
         setFormState(intialFormState);
       } else {
         const { todoToEdit } = state;
@@ -54,19 +54,19 @@ const Form = ({
           id: todoToEdit.id,
           completed: todoToEdit.completed
         };
-        dispatch({ type: "UPDATE_TODO", payload: updatedTodo });
+        dispatch({ type: 'UPDATE_TODO', payload: updatedTodo });
         setFormState(intialFormState);
       }
     }
   };
 
   const cancel = () => {
-    dispatch({ type: "CANCEL_EDIT" });
+    dispatch({ type: 'CANCEL_EDIT' });
     setFormState(intialFormState);
   };
 
   const clearCompletedTodos = () => {
-    dispatch({ type: "CLEAR_COMPLETED_TODOS" });
+    dispatch({ type: 'CLEAR_COMPLETED_TODOS' });
   };
 
   useEffect(() => {

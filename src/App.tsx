@@ -1,12 +1,12 @@
-import { useReducer } from "react";
+import { useReducer } from 'react';
 
-import Todo from "./components/todo/Todo";
-import Form from "./components/form/Form";
+import TodoList from './components/todo-list/TodoList';
+import Form from './components/form/Form';
 
-import { todoReducer } from "./reducers/todoReducer";
-import { TodoType } from "./types";
+import { todoReducer } from './reducers/todoReducer';
+import { TodoType } from './types';
 
-import "./app.styles.scss";
+import './app.styles.scss';
 
 const App = () => {
   const [state, dispatch] = useReducer(todoReducer, {
@@ -18,10 +18,7 @@ const App = () => {
   return (
     <div className="App">
       <Form state={state} dispatch={dispatch} />
-      {state.todos &&
-        state.todos.map((todo) => {
-          return <Todo todo={todo} key={todo.id} dispatch={dispatch} />;
-        })}
+      <TodoList todos={state.todos} dispatch={dispatch} />
     </div>
   );
 };
