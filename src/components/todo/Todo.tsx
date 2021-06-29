@@ -34,7 +34,7 @@ const Todo = ({
     dispatch({ type: 'TOGGLE_EDIT', payload: todo });
   };
 
-  const toggleCompleted = () => {
+  const toggleCompleted = (): void => {
     dispatch({ type: 'TOGGLE_COMPLETED', payload: todo });
     setChecked((prevState) => !prevState);
   };
