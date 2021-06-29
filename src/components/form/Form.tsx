@@ -1,4 +1,4 @@
-import { useState, Dispatch, ChangeEvent, FormEvent, useEffect } from 'react';
+import { Dispatch, ChangeEvent, FormEvent, useEffect } from 'react';
 
 import { TodoType } from '../../types';
 
@@ -35,7 +35,6 @@ const Form = ({
   formState: FormProps;
   setFormState: Dispatch<React.SetStateAction<any>>;
 }) => {
-  //const [formState, setFormState] = useState(intialFormState);
   const today: string = generateTodayDateString();
   const { isEditing, todoToEdit } = state;
 
