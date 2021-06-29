@@ -2,7 +2,7 @@
 
 ## Tech Stack
 
--TypeScript
--React
--Sass
--Material UI
+- TypeScript
+- React
+- Sass
+- Material UI
