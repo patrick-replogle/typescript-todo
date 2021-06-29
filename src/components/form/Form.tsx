@@ -28,6 +28,7 @@ const Form = ({
 }) => {
   const [formState, setFormState] = useState(intialFormState);
   const today: string = generateTodayDateString();
+  const { isEditing, todoToEdit } = state;
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
@@ -39,22 +40,17 @@ const Form = ({
     const { details, date } = formState;
 
     if (details.length && date.length) {
-      if (Object.keys(state).length > 0 && !state.isEditing) {
-        const newTodo: TodoType = {
-          ...formState,
-          id: Date.now(),
-          completed: false
-        };
-        dispatch({ type: 'ADD_TODO', payload: newTodo });
+      const todo = {
+        ...formState,
+        id: isEditing ? todoToEdit.id : Date.now(),
+        completed: isEditing ? todoToEdit.completed : false
+      };
+
+      if (!isEditing) {
+        dispatch({ type: 'ADD_TODO', payload: todo });
         setFormState(intialFormState);
       } else {
-        const { todoToEdit } = state;
-        const updatedTodo: TodoType = {
-          ...formState,
-          id: todoToEdit.id,
-          completed: todoToEdit.completed
-        };
-        dispatch({ type: 'UPDATE_TODO', payload: updatedTodo });
+        dispatch({ type: 'UPDATE_TODO', payload: todo });
         setFormState(intialFormState);
       }
     }
@@ -67,37 +63,53 @@ const Form = ({
 
   const clearCompletedTodos = () => {
     dispatch({ type: 'CLEAR_COMPLETED_TODOS' });
+    setFormState(intialFormState);
   };
 
   useEffect(() => {
-    if (state.isEditing) {
-      const { todoToEdit } = state;
+    if (isEditing) {
       setFormState({
         details: todoToEdit.details,
         date: todoToEdit.date
       });
     }
-  }, [state]);
+  }, [state, isEditing, todoToEdit]);
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="details"
-        value={formState.details}
-        placeholder="add a todo"
-        onChange={handleChange}
-      />
-      <input
-        type="date"
-        name="date"
-        value={formState.date}
-        onChange={handleChange}
-        min={today}
-      />
-      <button type="submit">Submit</button>
-      <button onClick={cancel}>Cancel</button>
-      <button onClick={clearCompletedTodos}>Clear Completed Tasks</button>
+      <div className="inputContainer">
+        <div>
+          <label>
+            Details
+            <input
+              type="text"
+              name="details"
+              value={formState.details}
+              placeholder="...add a todo"
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Date
+            <input
+              type="date"
+              name="date"
+              value={formState.date}
+              onChange={handleChange}
+              min={today}
+            />
+          </label>
+        </div>
+      </div>
+
+      <div className="btnContainer">
+        <button type="submit">Submit</button>
+        <button onClick={cancel}>Cancel</button>
+        <button onClick={clearCompletedTodos}>Clear Completed Tasks</button>
+      </div>
     </form>
   );
 };

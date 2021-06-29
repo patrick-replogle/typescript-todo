@@ -14,7 +14,7 @@ type TodoListProps = {
 const TodoList = ({ todos, dispatch }: TodoListProps) => {
   return (
     <div>
-      {todos.length &&
+      {todos.length > 0 &&
         todos.map((todo) => {
           return <Todo todo={todo} key={todo.id} dispatch={dispatch} />;
         })}
