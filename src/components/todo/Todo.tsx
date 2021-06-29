@@ -5,6 +5,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 import { ActionWithPayload } from '../../actions';
 
+import { generateDateStringForTodo } from '../../util/functions';
+
 import './todo.styles.scss';
 
 type TodoProps = {
@@ -32,7 +34,7 @@ const Todo = ({
     dispatch({ type: 'TOGGLE_EDIT', payload: todo });
   };
 
-  const toggleCompleted = () => {
+  const toggleCompleted = (): void => {
     dispatch({ type: 'TOGGLE_COMPLETED', payload: todo });
     setChecked((prevState) => !prevState);
   };
@@ -43,7 +45,7 @@ const Todo = ({
         <p style={{ textDecoration: checked ? 'line-through' : 'none' }}>
           {details}
         </p>
-        <p>{date}</p>
+        <p>{generateDateStringForTodo(date)}</p>
       </div>
       <div className="right">
         <CreateIcon onClick={toggleEdit} className="icon" />

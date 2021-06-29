@@ -6,3 +6,9 @@ export function generateTodayDateString(): string {
 
   return `${yyyy}-${mm}-${dd}`;
 }
+
+export function generateDateStringForTodo(inputDate: string): string {
+  const dateArr: string[] = String(new Date(inputDate)).split(' ');
+
+  return `${dateArr[1]} ${dateArr[2]} ${dateArr[3]}`;
+}

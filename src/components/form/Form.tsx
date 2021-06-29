@@ -93,7 +93,7 @@ const Form = ({
 
         <div>
           <label>
-            Date
+            Due Date
             <input
               type="date"
               name="date"
