@@ -18,10 +18,12 @@ type TodoProps = {
 
 const Todo = ({
   todo,
-  dispatch
+  dispatch,
+  setFormState
 }: {
   todo: TodoProps;
   dispatch: React.Dispatch<ActionWithPayload>;
+  setFormState: React.Dispatch<React.SetStateAction<any>>;
 }) => {
   const { completed, details, date } = todo;
   const [checked, setChecked] = useState(completed);
@@ -37,6 +39,7 @@ const Todo = ({
   const toggleCompleted = (): void => {
     dispatch({ type: 'TOGGLE_COMPLETED', payload: todo });
     setChecked((prevState) => !prevState);
+    setFormState({ details: '', date: '' });
   };
 
   return (

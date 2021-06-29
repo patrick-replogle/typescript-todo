@@ -11,14 +11,22 @@ import './todo-list.styles.scss';
 type TodoListProps = {
   todos: TodoType[];
   dispatch: Dispatch<ActionType>;
+  setFormState: Dispatch<React.SetStateAction<any>>;
 };
 
-const TodoList = ({ todos, dispatch }: TodoListProps) => {
+const TodoList = ({ todos, dispatch, setFormState }: TodoListProps) => {
   return (
     <div className="container">
       {todos.length > 0 &&
         todos.map((todo) => {
-          return <Todo todo={todo} key={todo.id} dispatch={dispatch} />;
+          return (
+            <Todo
+              todo={todo}
+              key={todo.id}
+              dispatch={dispatch}
+              setFormState={setFormState}
+            />
+          );
         })}
     </div>
   );

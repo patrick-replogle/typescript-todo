@@ -14,6 +14,11 @@ type TodoProps = {
   todoToEdit: TodoType;
 };
 
+type FormProps = {
+  details: string;
+  date: string;
+};
+
 const intialFormState = {
   details: '',
   date: ''
@@ -21,12 +26,16 @@ const intialFormState = {
 
 const Form = ({
   state,
-  dispatch
+  dispatch,
+  formState,
+  setFormState
 }: {
   state: TodoProps;
   dispatch: Dispatch<ActionType>;
+  formState: FormProps;
+  setFormState: Dispatch<React.SetStateAction<any>>;
 }) => {
-  const [formState, setFormState] = useState(intialFormState);
+  //const [formState, setFormState] = useState(intialFormState);
   const today: string = generateTodayDateString();
   const { isEditing, todoToEdit } = state;
 
@@ -37,9 +46,7 @@ const Form = ({
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
 
-    const { details, date } = formState;
-
-    if (details.length && date.length) {
+    if (formState.details.length && formState.date.length) {
       const todo = {
         ...formState,
         id: isEditing ? todoToEdit.id : Date.now(),
@@ -73,7 +80,7 @@ const Form = ({
         date: todoToEdit.date
       });
     }
-  }, [state, isEditing, todoToEdit]);
+  }, [state, isEditing, todoToEdit, setFormState]);
 
   return (
     <form onSubmit={handleSubmit}>
