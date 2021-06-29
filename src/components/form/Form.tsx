@@ -106,6 +106,7 @@ const Form = ({
               value={formState.date}
               onChange={handleChange}
               min={today}
+              className="date"
             />
           </label>
         </div>
