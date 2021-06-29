@@ -1,19 +1,38 @@
 .todoContainer {
   display: flex;
   align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 6px;
+  width: 100%;
+  margin: 1%;
 
-  .iconContainer {
+  .left {
+    width: 50%;
+
+    p {
+      font-size: 1.6rem;
+      text-align: left;
+      padding-left: 2%;
+    }
+  }
+
+  .right {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    width: 50%;
 
     .icon {
       font-size: 3rem;
       cursor: pointer;
+      margin-right: 4%;
     }
 
     input {
       height: 20px;
       width: 20px;
+      margin-right: 4%;
     }
   }
 }

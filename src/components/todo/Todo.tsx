@@ -39,13 +39,13 @@ const Todo = ({
 
   return (
     <div className="todoContainer">
-      <div>
+      <div className="left">
         <p style={{ textDecoration: checked ? 'line-through' : 'none' }}>
           {details}
         </p>
         <p>{date}</p>
       </div>
-      <div className="iconContainer">
+      <div className="right">
         <CreateIcon onClick={toggleEdit} className="icon" />
         <DeleteIcon onClick={deleteTodo} className="icon" />
         <input
