@@ -93,6 +93,7 @@ const Form = ({
               value={formState.details}
               placeholder="...add a todo"
               onChange={handleChange}
+              required
             />
           </label>
         </div>
@@ -107,6 +108,7 @@ const Form = ({
               onChange={handleChange}
               min={today}
               className="date"
+              required
             />
           </label>
         </div>
